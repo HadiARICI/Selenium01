@@ -48,7 +48,7 @@ public class C03_WindowHandle2 {
         String ilksayfaninHandleDegeri=driver.getWindowHandle();
         System.out.println("ilksayfaninHandleDegeri = " + ilksayfaninHandleDegeri);
 
-
+// bütün sayfalarin handle değeri==================================
         Set<String> windowHandleSeti= driver.getWindowHandles();
         System.out.println("windowHandleSeti = " + windowHandleSeti);
         String ikinciSayfaHandleDegeri="";
@@ -61,7 +61,7 @@ public class C03_WindowHandle2 {
 
         }
 
-
+// 2.sayfa geçiş=====================================================00
         driver.switchTo().window(ikinciSayfaHandleDegeri);
         // click Here buttonuna basalım
        driver.findElement(By.xpath("//a[text()='Click Here']")).click();
@@ -75,7 +75,7 @@ public class C03_WindowHandle2 {
         String actualIkınciSyafaYazi=ikinciSayfaYaziElementi.getText();
        // Assert.assertEquals(expectedIkınciSayfaYazi,actualIkınciSyafaYazi);
 
-
+// tekrar ilk sayfaya dönüş==============================================
         driver.switchTo().window(ilksayfaninHandleDegeri);
         String expected111="The Internet";
         String actual111=driver.getTitle();
