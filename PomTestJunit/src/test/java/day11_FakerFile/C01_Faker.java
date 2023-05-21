@@ -1,14 +1,14 @@
-package Day10_actions;
+package day11_FakerFile;
 
+import com.github.javafaker.Faker;
 import org.junit.Test;
 import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
-import org.openqa.selenium.support.ui.Select;
 import utilities.TestBase;
 
-public class C06_KeyboardActions2 extends TestBase {
+public class C01_Faker extends TestBase {
 
     @Test
     public void test01() {
@@ -17,24 +17,27 @@ public class C06_KeyboardActions2 extends TestBase {
         //isim kutusunu locate edip
         // geriye kalan alanlari TAB ile doldurark formu doldurun
 
-        Actions actions=new Actions(driver);
+
         driver.get("https://www.facebook.com");
 
-        WebElement yeniHesapOlustur= driver.findElement(By.xpath("//a[@class='_42ft _4jy0 _6lti _4jy6 _4jy2 selected _51sy']"));
+        WebElement yeniHesapOlustur = driver.findElement(By.xpath("//a[@class='_42ft _4jy0 _6lti _4jy6 _4jy2 selected _51sy']"));
         yeniHesapOlustur.click();
 
-        WebElement firstName= driver.findElement(By.xpath("//input[@name='firstname']"));
+        WebElement firstName = driver.findElement(By.xpath("//input[@name='firstname']"));
+        Actions actions = new Actions(driver);
+        Faker faker=new Faker();
+        String fakerEmail=faker.internet().emailAddress();
 
         actions.click(firstName)
-                .sendKeys("Hadi")
+                .sendKeys(faker.name().firstName())
                 .sendKeys(Keys.TAB)
-                .sendKeys("ARICI")
+                .sendKeys(faker.name().lastName())
                 .sendKeys(Keys.TAB)
-                .sendKeys("mina@hotmail.com")
+                .sendKeys(fakerEmail)
                 .sendKeys(Keys.TAB)
-                .sendKeys("mina@hotmail.com")
+                .sendKeys(fakerEmail)
                 .sendKeys(Keys.TAB)
-                .sendKeys("12361236")
+                .sendKeys(faker.internet().password())
                 .sendKeys(Keys.TAB)
                 .sendKeys(Keys.TAB)
                 .sendKeys("23").sendKeys(Keys.TAB)
@@ -71,9 +74,6 @@ public class C06_KeyboardActions2 extends TestBase {
         kaydolButton.click();
 
  */
-
-
-
 
 
     }
