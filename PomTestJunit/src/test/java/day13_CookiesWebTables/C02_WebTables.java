@@ -58,6 +58,7 @@ public class C02_WebTables extends TestBase {
         // tablo daki başlıkların listesini verir...
 
         List<WebElement> baaliklarinListesi=driver.findElements(By.xpath("//thead//tr[1]//th"));
+
         int emailSutunNo=0;
         for (int i = 0; i <baaliklarinListesi.size() ; i++) {
             if (baaliklarinListesi.get(i).getText().equals("Email")){
